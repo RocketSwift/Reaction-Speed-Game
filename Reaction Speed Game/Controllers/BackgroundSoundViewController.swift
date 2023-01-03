@@ -27,9 +27,11 @@ class BackgroundSoundViewController: UIViewController {
         soundMuted = UserDefaultsManager.shared.checkSoundPreferences()
         self.view.addSubview(soundButton)
         if soundMuted == false {
+            MusicManager.shared.soundMuted = false
             soundButton.setImage(UIImage(systemName: "speaker.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)), for: .normal)
             
         } else {
+            MusicManager.shared.soundMuted = true
             soundButton.setImage(UIImage(systemName: "speaker.slash.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)), for: .normal)
         }
         soundButton.addTarget(self, action: #selector(muteSoundButtonTapped), for: .touchUpInside)
